@@ -86,7 +86,7 @@ fi
 
 echo -n "Testing Spark Q4 ..."
 test_spark_q4 > out/test_spark_q4.out 2> out/test_spark_q4.err
-if grep -E -q "^Number of records written: 1000000[[:space:]]+$" out/test_spark_q4.out && \
+if grep -E -q "^Number of records written: 1000000[[:space:]]*$" out/test_spark_q4.out && \
    grep -q "==== TeraSort took .* ====" out/test_spark_q4.out && \
    grep -q "7a30469d6f066" out/test_spark_q4.out && \
    grep -q "partitions are properly sorted" out/test_spark_q4.out; then

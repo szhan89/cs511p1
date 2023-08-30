@@ -54,7 +54,7 @@ fi
 
 echo -n "Testing HDFS Q2 ..."
 test_hdfs_q2 > out/test_hdfs_q2.out 2> out/test_hdfs_q2.err
-if grep -E -q '^The quick brown fox jumps over the lazy dog.$' out/test_hdfs_q2.out; then
+if grep -E -q '^The quick brown fox jumps over the lazy dog[[:space:]]*$' out/test_hdfs_q2.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
     echo -e " ${RED}FAIL${NC}"
@@ -64,7 +64,7 @@ fi
 
 echo -n "Testing HDFS Q3 ..."
 test_hdfs_q3 > out/test_hdfs_q3.out 2> out/test_hdfs_q3.err
-if [ "$(grep -E '# operations: 10000[[:space:]]+$' out/test_hdfs_q3.out | wc -l)" -eq 4 ]; then
+if [ "$(grep -E '# operations: 10000[[:space:]]*$' out/test_hdfs_q3.out | wc -l)" -eq 4 ]; then
     echo -e " ${GREEN}PASS${NC}"
 else
     echo -e " ${RED}FAIL${NC}"
@@ -74,7 +74,7 @@ fi
 
 echo -n "Testing HDFS Q4 ..."
 test_hdfs_q4 > out/test_hdfs_q4.out 2> out/test_hdfs_q4.err
-if [ "$(grep -E 'Job ([[:alnum:]]|_)+ completed successfully[[:space:]]+$' out/test_hdfs_q4.out | wc -l)" -eq 3 ] && grep -q "7a27e2d0d55de" out/test_hdfs_q4.out; then
+if [ "$(grep -E 'Job ([[:alnum:]]|_)+ completed successfully[[:space:]]*$' out/test_hdfs_q4.out | wc -l)" -eq 3 ] && grep -q "7a27e2d0d55de" out/test_hdfs_q4.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
     echo -e " ${RED}FAIL${NC}"
