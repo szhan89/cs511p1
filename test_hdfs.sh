@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function test_hdfs_q1() {
-    docker-compose -f cs511p1-compose.yaml exec main hdfs dfsadmin -report
+    docker-compose -f cs511p1-compose.yaml exec main hdfs dfsadmin -report >&2
 }
 
 function test_hdfs_q2() {
@@ -43,7 +43,7 @@ NC='\033[0m'
 mkdir -p out
 
 echo -n "Testing HDFS Q1 ..."
-test_hdfs_q1 > out/test_hdfs_q1.out 2> out/test_hdfs_q1.err
+test_hdfs_q1 > out/test_hdfs_q1.out 2>&1
 if grep -q "Live datanodes (3)" out/test_hdfs_q1.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -53,7 +53,7 @@ else
 fi
 
 echo -n "Testing HDFS Q2 ..."
-test_hdfs_q2 > out/test_hdfs_q2.out 2> out/test_hdfs_q2.err
+test_hdfs_q2 > out/test_hdfs_q2.out 2>&1
 if grep -E -q '^The quick brown fox jumps over the lazy dog[[:space:]]*$' out/test_hdfs_q2.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -63,7 +63,7 @@ else
 fi
 
 echo -n "Testing HDFS Q3 ..."
-test_hdfs_q3 > out/test_hdfs_q3.out 2> out/test_hdfs_q3.err
+test_hdfs_q3 > out/test_hdfs_q3.out 2>&1
 if [ "$(grep -E '# operations: 10000[[:space:]]*$' out/test_hdfs_q3.out | wc -l)" -eq 4 ]; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -73,7 +73,7 @@ else
 fi
 
 echo -n "Testing HDFS Q4 ..."
-test_hdfs_q4 > out/test_hdfs_q4.out 2> out/test_hdfs_q4.err
+test_hdfs_q4 > out/test_hdfs_q4.out 2>&1
 if [ "$(grep -E 'Job ([[:alnum:]]|_)+ completed successfully[[:space:]]*$' out/test_hdfs_q4.out | wc -l)" -eq 3 ] && grep -q "7a27e2d0d55de" out/test_hdfs_q4.out; then
     echo -e " ${GREEN}PASS${NC}"
 else

@@ -55,7 +55,7 @@ NC='\033[0m'
 mkdir -p out
 
 echo -n "Testing Spark Q1 ..."
-test_spark_q1 > out/test_spark_q1.out 2> out/test_spark_q1.err
+test_spark_q1 > out/test_spark_q1.out 2>&1
 if grep -E -q "Seq\[String\] = List\([0-9\.:]*, [0-9\.:]*, [0-9\.:]*\)" out/test_spark_q1.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -65,7 +65,7 @@ else
 fi
 
 echo -n "Testing Spark Q2 ..."
-test_spark_q2 > out/test_spark_q2.out 2> out/test_spark_q2.err
+test_spark_q2 > out/test_spark_q2.out 2>&1
 if grep -E -q '^Pi is roughly 3.14[0-9]*' out/test_spark_q2.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -75,7 +75,7 @@ else
 fi
 
 echo -n "Testing Spark Q3 ..."
-test_spark_q3 > out/test_spark_q3.out 2> out/test_spark_q3.err
+test_spark_q3 > out/test_spark_q3.out 2>&1
 if grep -q 'Array(The quick brown fox jumps over the lazy dog)' out/test_spark_q3.out; then
     echo -e " ${GREEN}PASS${NC}"
 else
@@ -85,7 +85,7 @@ else
 fi
 
 echo -n "Testing Spark Q4 ..."
-test_spark_q4 > out/test_spark_q4.out 2> out/test_spark_q4.err
+test_spark_q4 > out/test_spark_q4.out 2>&1
 if grep -E -q "^Number of records written: 1000000[[:space:]]*$" out/test_spark_q4.out && \
    grep -q "==== TeraSort took .* ====" out/test_spark_q4.out && \
    grep -q "7a30469d6f066" out/test_spark_q4.out && \
