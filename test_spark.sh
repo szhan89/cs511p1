@@ -31,15 +31,15 @@ function test_spark_q4() {
         main:/spark-terasort-1.2.jar
     docker-compose -f cs511p1-compose.yaml exec main spark-submit \
         --master spark://main:7077 \
-        --class com.github.ehiggs.spark.terasort.TeraGen /spark-terasort-1.2.jar \
+        --class com.github.ehiggs.spark.terasort.TeraGen local:///spark-terasort-1.2.jar \
         100m hdfs://main:9000/spark/tera-in
     docker-compose -f cs511p1-compose.yaml exec main spark-submit \
         --master spark://main:7077 \
-        --class com.github.ehiggs.spark.terasort.TeraSort /spark-terasort-1.2.jar \
+        --class com.github.ehiggs.spark.terasort.TeraSort local:///spark-terasort-1.2.jar \
         hdfs://main:9000/spark/tera-in hdfs://main:9000/spark/tera-out
     docker-compose -f cs511p1-compose.yaml exec main spark-submit \
         --master spark://main:7077 \
-        --class com.github.ehiggs.spark.terasort.TeraValidate /spark-terasort-1.2.jar \
+        --class com.github.ehiggs.spark.terasort.TeraValidate local:///spark-terasort-1.2.jar \
         hdfs://main:9000/spark/tera-out hdfs://main:9000/spark/tera-val
 }
 
