@@ -12,3 +12,6 @@ chmod 0600 ~/.ssh/authorized_keys
 ####################################################################################
 
 # Setup HDFS/Spark main here
+#COPY ./core-site.xml ${HADOOP_HOME}/etc/hadoop/core-site.xml
+#COPY ./hdfs-site.xml ${HADOOP_HOME}/etc/hadoop/hdfs-site.xml
+
