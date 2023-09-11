@@ -13,3 +13,8 @@ RUN /bin/bash setup-main.sh
 
 COPY ./start-main.sh ./start-main.sh
 CMD ["/bin/bash", "start-main.sh"]
+
+# Set Spark configurations specific for main node
+COPY ./config/main/spark-defaults.conf ${SPARK_HOME}/conf/
+COPY ./config/main/spark-env.sh ${SPARK_HOME}/conf/
+COPY ./config/main/workers ${SPARK_HOME}/conf/
