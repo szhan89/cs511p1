@@ -31,4 +31,7 @@ $HADOOP_HOME/sbin/start-dfs.sh
 #$HADOOP_HOME/bin/hdfs datanode 
 #$HADOOP_HOME/bin/hdfs secondarynamenode
 
+# Start Spark
+$SPARK_HOME/sbin/start-all.sh
+
 bash
