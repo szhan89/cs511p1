@@ -11,6 +11,7 @@ ssh-add ~/.ssh/shared_rsa
 ####################################################################################
 
 # Start HDFS/Spark worker here
+sleep 15
 
 $HADOOP_HOME/bin/hdfs datanode
 
