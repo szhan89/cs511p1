@@ -16,3 +16,7 @@ RUN ssh-keygen -t rsa -P '' -f ~/.ssh/shared_rsa -C common && \
 ####################################################################################
 
 # Setup HDFS/Spark resources here
+
+ENV HADOOP_HOME /hadoop
+ENV PATH=$PATH:$HADOOP_HOME/bin
+
